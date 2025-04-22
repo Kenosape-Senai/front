@@ -1,0 +1,44 @@
+{
+    "programs": [
+        {
+            "id": "07",
+            "name": "Furação Ø48",
+            "tipo": "Furação"
+        },
+        {
+            "id": "08",
+            "name": "Furação Ø42",
+            "tipo": "Furação"
+        },
+        {
+            "id": "09",
+            "name": "Furação Ø30",
+            "tipo": "Furação"
+        },
+        {
+            "id": "10",
+            "name": "Desbaste Ø52",
+            "tipo": "Desbaste por offset"
+        },
+        {
+            "id": "11",
+            "name": "Fresa Ø25",
+            "tipo": "Fresa"
+        },
+        {
+            "id": "12",
+            "name": "Fresa Ø10.5",
+            "tipo": "Fresa"
+        },
+        {
+            "id": "13",
+            "name": "Fresa Ø40",
+            "tipo": "Fresa"
+        },
+        {
+            "id": "14",
+            "name": "Rosca M12",
+            "tipo": "Roscar"
+        }
+    ]
+}
