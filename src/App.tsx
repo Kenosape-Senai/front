@@ -1,13 +1,13 @@
-import { useState } from 'react';
-import './App.css';
-import * as bootstrap from 'bootstrap';
-import { Tooltip, Toast, Popover } from 'bootstrap';
+import RoutesApp from './routes';
+import "./App.css"
+// import * as bootstrap from 'bootstrap';
+// import { Tooltip, Toast, Popover } from 'bootstrap';
 
 function App() {
   return (
-    <>
-      <div>TESTE</div>
-    </>
+    <div className="App">
+      <RoutesApp/>
+    </div>
   );
 }
 
