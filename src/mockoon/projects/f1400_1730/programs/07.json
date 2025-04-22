@@ -1,0 +1,13 @@
+{
+    "programa": "07",
+    "tipo": "Furação",
+    "ferramenta": "BR_TOPDRILL Ø48",
+    "diametro": 48,
+    "rc": 0,
+    "rib": 247,
+    "altura": 273,
+    "tempo_total": "3:38:53",
+    "suportes": [
+        "78020010|SK50_CRL-C440-50_L187"
+    ]
+}
