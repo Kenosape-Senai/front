@@ -1,0 +1,68 @@
+.sidebar {
+    width: 250px;
+    background-color: #12372A;
+    color: white;
+    padding: 1rem;
+    transition: width 0.3s ease;
+    overflow: hidden;
+  }
+  
+  .sidebar.collapsed {
+    width: 60px;
+    padding: 1rem 0.5rem;
+  }
+  
+  .sidebar .toggle-btn {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.5rem;
+    cursor: pointer;
+    margin-bottom: 1rem;
+  }
+  .imagem_logo {
+    width: 100%;
+    max-width: 160px;
+    margin-bottom: 2rem;
+    transition: all 0.3s;
+  }
+  
+  .sidebar.collapsed .imagem_logo,
+  .sidebar.collapsed h2,
+  .sidebar.collapsed input,
+  .sidebar.collapsed ul {
+    display: none;
+  }
+  
+  .sidebar h2 {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+    color: #f4f4f4;
+  }
+  
+  #searchInput {
+    width: 100%;
+    padding: 0.5rem;
+    border-radius: 6px;
+    border: none;
+    margin-bottom: 1rem;
+  }
+  
+  .sidebar ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .sidebar ul li {
+    padding: 0.6rem 0.8rem;
+    margin-bottom: 0.5rem;
+    border-radius: 6px;
+    cursor: pointer;
+    background-color: #1f4e3d;
+    transition: background-color 0.2s;
+  }
+  
+  .sidebar ul li:hover {
+    background-color: #12372A;
+  }
+  
