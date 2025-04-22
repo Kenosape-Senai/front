@@ -207,7 +207,7 @@ export default function Projects() {
         onSearch={handleSearch}
         onSelectProject={handleSelectProject}
       />
-      <MainContent isSidebarCollapsed={isSidebarCollapsed} />
+      <MainContent />
     </div>
   );
 }
