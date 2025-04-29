@@ -3,9 +3,12 @@ import Sidebar from "./components/Sidebar";
 import MainContent from "./components/Main";
 import { Chart, Chart as ChartJS } from "chart.js/auto";
 import "./Projects.css"
+import Modal from "./components/Modal";
 
 export default function Projects() {
   const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [modalStep, setModalStep] = useState<number | null>(null);
 
   const toggleSidebar = () => {
     setIsSidebarCollapsed(!isSidebarCollapsed);
@@ -78,11 +81,21 @@ export default function Projects() {
     Array.from({ length: 10 }, (_, index) => {
       const li = document.createElement("li");
       li.innerHTML = `Etapa ${index + 1}`;
+
       const checkbox = document.createElement("input");
       checkbox.type = "checkbox";
       checkbox.classList.add("step-checkbox");
       checkbox.id = `step${index + 1}`;
+
       li.appendChild(checkbox);
+
+      li.onclick = () => {
+        setModalStep(index + 1);
+        setIsModalOpen(true);
+      };
+    
+      checkbox.onclick = (e) => e.stopPropagation();
+
       stepsContainer.appendChild(li);
     });
 
@@ -153,9 +166,8 @@ export default function Projects() {
       });
     }
 
-    // Configuração do gráfico de pizza
     if (pieChartCanvas) {
-      destroyChart(pieChartInstance);  // Destruir gráfico existente antes de criar um novo
+      destroyChart(pieChartInstance);
       pieChartInstance = new Chart(pieChartCanvas, {
         type: "doughnut",
         data: {
@@ -191,8 +203,6 @@ export default function Projects() {
         },
       });
     }
-
-    // Cleanup ao desmontar o componente
     return () => {
       destroyChart(barChartInstance);
       destroyChart(pieChartInstance);
@@ -208,6 +218,28 @@ export default function Projects() {
         onSelectProject={handleSelectProject}
       />
       <MainContent />
+      <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}>
+        {modalStep && (
+          <div>
+            <h2 style={{ marginBottom: "1rem" }}>Detalhes da Etapa</h2>
+            <p><strong>Programa:</strong> Program{modalStep}</p>
+            <p><strong>Tipo de Percurso:</strong> Corte</p>
+            <p><strong>Ref:</strong> REF123</p>
+            <p><strong>Comentário:</strong> Primeira etapa de usinagem</p>
+            <p><strong>Material:</strong> Aço</p>
+            <p><strong>Ferramenta:</strong> Fresa Carbide</p>
+            <p><strong>Diâmetro:</strong> 10mm</p>
+            <p><strong>Raio da ponta:</strong> 1mm</p>
+            <p><strong>Comprimento:</strong> 50mm</p>
+            <p><strong>Suporte:</strong> HolderX</p>
+            <p><strong>Plano de Trabalho:</strong> XYZ</p>
+            <p><strong>Tempo:</strong> 00:30:00</p>
+            <p><strong>Data:</strong> 29/04/2025</p>
+            <p><strong>Operador:</strong> Fernanda</p>
+            <p><strong>Caminho do programa:</strong> /program/program{modalStep}.pmill</p>
+          </div>
+        )}
+      </Modal>
     </div>
   );
 }
