@@ -25,6 +25,7 @@
     max-width: 160px;
     margin-bottom: 2rem;
     transition: all 0.3s;
+    cursor: pointer;
   }
   
   .sidebar.collapsed .imagem_logo,

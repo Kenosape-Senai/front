@@ -80,7 +80,23 @@ export default function Projects() {
     stepsContainer.innerHTML = "";
     Array.from({ length: 10 }, (_, index) => {
       const li = document.createElement("li");
-      li.innerHTML = `Etapa ${index + 1}`;
+      li.innerHTML = `<b>Etapa ${index + 1}</b> | 
+      Info 1 | 
+      Info 2 | 
+      Info 3 | 
+      Info 4 |
+      Info 5 |
+      Info 6 |
+      Info 7 |
+      Info 8 |
+      Info 9 |
+      Info 10|
+      Info 11|
+      Info 12|
+      Info 13|
+      Info 14|
+      Info 15|
+      `;
 
       const checkbox = document.createElement("input");
       checkbox.type = "checkbox";
@@ -125,46 +141,76 @@ export default function Projects() {
     let pieChartInstance: ChartJS | null = null;
 
     // Configuração do gráfico de barras
-    if (barChartCanvas) {
-      destroyChart(barChartInstance);  // Destruir gráfico existente antes de criar um novo
-      barChartInstance = new Chart(barChartCanvas, {
-        type: "bar",
-        data: {
-          labels: ["Projeto 1", "Projeto 2", "Projeto 3", "Projeto 4", "Projeto 5"],
-          datasets: [
-            {
-              label: "Dias de execução",
-              data: [120, 90, 45, 30, 60],
-              backgroundColor: "#1f4e3d",
-              borderRadius: 8,
-            },
-          ],
-        },
-        options: {
-          responsive: true,
-          plugins: {
-            legend: { display: false },
-            tooltip: {
-              backgroundColor: "#12372A",
-              titleColor: "#fff",
-              bodyColor: "#fff",
-              cornerRadius: 8,
+if (barChartCanvas) {
+  destroyChart(barChartInstance); // Destruir gráfico existente antes de criar um novo
+
+    barChartInstance = new Chart(barChartCanvas, {
+      type: "bar",
+      data: {
+        labels: [
+          "", "Projeto 1", 
+          "", "Projeto 2", 
+          "", "Projeto 3", 
+          "", "Projeto 4", 
+          "", "Projeto 5"
+        ],
+        datasets: [
+          {
+            label: "Tempo estimado",
+            data: [null, 110, null, 85, null, 40, null, 28, null, 50],
+            backgroundColor: "#f9a825",
+            borderRadius: 8,
+            barThickness: 20,
+          },
+          {
+            label: "Tempo real",
+            data: [120, null, 90, null, 45, null, 30, null, 60, null],
+            backgroundColor: "#2e7d32",
+            borderRadius: 8,
+            barThickness: 20,
+          },
+        ],
+      },
+      options: {
+        responsive: true,
+        plugins: {
+          legend: {
+            display: true,
+            position: "top",
+            labels: {
+              color: "#12372A",
+              font: { weight: "bold" },
             },
           },
-          scales: {
-            x: {
-              ticks: { color: "#12372A", font: { weight: "bold" } },
-              grid: { display: false },
-            },
-            y: {
-              beginAtZero: true,
-              ticks: { color: "#12372A", font: { weight: "bold" } },
-              grid: { color: "rgba(18, 55, 42, 0.1)" },
-            },
+          tooltip: {
+            backgroundColor: "#12372A",
+            titleColor: "#fff",
+            bodyColor: "#fff",
+            cornerRadius: 8,
           },
         },
-      });
-    }
+        scales: {
+          x: {
+            ticks: {
+              color: "#12372A",
+              font: { weight: "bold" },
+            },
+            grid: { display: false },
+            stacked: false,
+          },
+          y: {
+            beginAtZero: true,
+            ticks: {
+              color: "#12372A",
+              font: { weight: "bold" },
+            },
+            grid: { color: "rgba(18, 55, 42, 0.1)" },
+          },
+        },
+      },
+    });
+  }
+
 
     if (pieChartCanvas) {
       destroyChart(pieChartInstance);

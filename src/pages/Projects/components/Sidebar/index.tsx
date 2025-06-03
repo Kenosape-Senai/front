@@ -14,12 +14,18 @@ export default function Sidebar({
   onSearch,
   onSelectProject, // <-- você esqueceu de desestruturar esses dois
 }: SidebarProps) {
+
+  const handleSubmit = (event: any) => {
+        event.preventDefault(); // Prevent real form submission
+        window.location.href = "/projects"; // Redirect to the projetos page
+      };
+
   return (
     <div className={`sidebar ${isCollapsed ? "collapsed" : ""}`} id="sidebar">
       <button id="toggleSidebar" className="toggle-btn" onClick={onToggleSidebar}>
         ☰
       </button>
-      <img className="imagem_logo" id="logo" src="/imagem_logo.png" alt="Logo Grupo Simoldes" />
+      <img className="imagem_logo" onClick={handleSubmit} id="logo" src="/imagem_logo.png" alt="Logo Grupo Simoldes" />
       <h2>Projetos</h2>
       <input
         type="text"
