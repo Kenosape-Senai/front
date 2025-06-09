@@ -1,6 +1,15 @@
 import React from "react";
 import "./Sidebar.css"
 
+const projects = {
+"projects": [
+        {
+            "id": "f1400_1730",
+            "name": "F1400 - Material 1730"
+        }
+    ]
+}
+
 type SidebarProps = {
   isCollapsed: boolean;
   onToggleSidebar: () => void;
@@ -12,12 +21,12 @@ export default function Sidebar({
   isCollapsed,
   onToggleSidebar,
   onSearch,
-  onSelectProject, // <-- você esqueceu de desestruturar esses dois
+  onSelectProject,
 }: SidebarProps) {
 
   const handleSubmit = (event: any) => {
-        event.preventDefault(); // Prevent real form submission
-        window.location.href = "/projects"; // Redirect to the projetos page
+        event.preventDefault();
+        window.location.href = "/projects";
       };
 
   return (
@@ -34,10 +43,9 @@ export default function Sidebar({
         onChange={onSearch}
       />
       <ul>
-        <li onClick={() => onSelectProject("Projeto 1")}>Projeto 1</li>
-        <li onClick={() => onSelectProject("Projeto 2")}>Projeto 2</li>
-        <li onClick={() => onSelectProject("Projeto 3")}>Projeto 3</li>
-        <li onClick={() => onSelectProject("Projeto 4")}>Projeto 4</li>
+        {projects.projects.map((project, index) => (
+          <li key={index} onClick={() => onSelectProject(project.name)}>{project.name}</li>
+        ))}
       </ul>
     </div>
   );

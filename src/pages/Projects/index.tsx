@@ -5,6 +5,65 @@ import { Chart, Chart as ChartJS } from "chart.js/auto";
 import "./Projects.css"
 import Modal from "./components/Modal";
 
+const program_07 = {
+    "programa": "07",
+    "tipo": "Furação",
+    "ferramenta": "BR_TOPDRILL Ø48",
+    "diametro": 48,
+    "rc": 0,
+    "rib": 247,
+    "altura": 273,
+    "tempo_total": "3:38:53",
+    "suportes": [
+        "78020010|SK50_CRL-C440-50_L187"
+    ]
+}
+
+const programs = {
+    "programs": [
+        {
+            "id": "07",
+            "name": "Furação Ø48",
+            "tipo": "Furação"
+        },
+        {
+            "id": "08",
+            "name": "Furação Ø42",
+            "tipo": "Furação"
+        },
+        {
+            "id": "09",
+            "name": "Furação Ø30",
+            "tipo": "Furação"
+        },
+        {
+            "id": "10",
+            "name": "Desbaste Ø52",
+            "tipo": "Desbaste por offset"
+        },
+        {
+            "id": "11",
+            "name": "Fresa Ø25",
+            "tipo": "Fresa"
+        },
+        {
+            "id": "12",
+            "name": "Fresa Ø10.5",
+            "tipo": "Fresa"
+        },
+        {
+            "id": "13",
+            "name": "Fresa Ø40",
+            "tipo": "Fresa"
+        },
+        {
+            "id": "14",
+            "name": "Rosca M12",
+            "tipo": "Roscar"
+        }
+    ]
+}
+
 export default function Projects() {
   const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -78,25 +137,16 @@ export default function Projects() {
     updateCarouselImage();
 
     stepsContainer.innerHTML = "";
-    Array.from({ length: 10 }, (_, index) => {
+    programs.programs.map((program, index) => {
       const li = document.createElement("li");
-      li.innerHTML = `<b>Etapa ${index + 1}</b> | 
-      Info 1 | 
-      Info 2 | 
-      Info 3 | 
-      Info 4 |
-      Info 5 |
-      Info 6 |
-      Info 7 |
-      Info 8 |
-      Info 9 |
-      Info 10|
-      Info 11|
-      Info 12|
-      Info 13|
-      Info 14|
-      Info 15|
-      `;
+      li.innerHTML = `<b>${program.name}</b>| 
+      Tipo: ${program_07.tipo} | 
+      Ferramenta: ${program_07.ferramenta} | 
+      Diâmetro: ${program_07.diametro} | 
+      RC: ${program_07.rc} |
+      RIB: ${program_07.rib} |
+      Altura: ${program_07.altura} |
+      Tempo total: ${program_07.tempo_total} |`
 
       const checkbox = document.createElement("input");
       checkbox.type = "checkbox";
@@ -268,21 +318,18 @@ if (barChartCanvas) {
         {modalStep && (
           <div>
             <h2 style={{ marginBottom: "1rem" }}>Detalhes da Etapa</h2>
-            <p><strong>Programa:</strong> Program{modalStep}</p>
-            <p><strong>Tipo de Percurso:</strong> Corte</p>
-            <p><strong>Ref:</strong> REF123</p>
-            <p><strong>Comentário:</strong> Primeira etapa de usinagem</p>
-            <p><strong>Material:</strong> Aço</p>
-            <p><strong>Ferramenta:</strong> Fresa Carbide</p>
-            <p><strong>Diâmetro:</strong> 10mm</p>
-            <p><strong>Raio da ponta:</strong> 1mm</p>
-            <p><strong>Comprimento:</strong> 50mm</p>
-            <p><strong>Suporte:</strong> HolderX</p>
-            <p><strong>Plano de Trabalho:</strong> XYZ</p>
-            <p><strong>Tempo:</strong> 00:30:00</p>
+            <p><strong>Programa:</strong> Programa {program_07.programa}</p>
+            <p><strong>Tipo:</strong> {program_07.tipo}</p>
+            <p><strong>Ferramenta:</strong> {program_07.ferramenta}</p>
+            <p><strong>Diâmetro:</strong> {program_07.diametro}</p>
+            <p><strong>RC:</strong> {program_07.rc}</p>
+            <p><strong>RIB:</strong> {program_07.rib}</p>
+            <p><strong>Altura:</strong> {program_07.altura}</p>
+            <p><strong>Tempo:</strong> {program_07.tempo_total}</p>
+            <p><strong>Suportes:</strong> {program_07.suportes[0]}</p>
             <p><strong>Data:</strong> 29/04/2025</p>
             <p><strong>Operador:</strong> Fernanda</p>
-            <p><strong>Caminho do programa:</strong> /program/program{modalStep}.pmill</p>
+            <p><strong>Caminho do programa:</strong> /program/program{program_07.programa}.pmill</p>
           </div>
         )}
       </Modal>
