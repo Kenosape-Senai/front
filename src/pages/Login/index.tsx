@@ -2,8 +2,8 @@ import "./login.css"
 
 export default function Login(){
     const handleSubmit = (event: any) => {
-        event.preventDefault(); // Prevent real form submission
-        window.location.href = "/projects"; // Redirect to the projetos page
+        event.preventDefault();
+        window.location.href = "/projects";
       };
     
       return (
