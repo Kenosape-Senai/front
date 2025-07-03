@@ -190,9 +190,8 @@ export default function Projects() {
     let barChartInstance: ChartJS | null = null;
     let pieChartInstance: ChartJS | null = null;
 
-    // Configuração do gráfico de barras
 if (barChartCanvas) {
-  destroyChart(barChartInstance); // Destruir gráfico existente antes de criar um novo
+  destroyChart(barChartInstance);
 
     barChartInstance = new Chart(barChartCanvas, {
       type: "bar",
